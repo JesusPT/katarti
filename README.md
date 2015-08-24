@@ -1,0 +1,2 @@
+# katarti
+Compilador ITCG
