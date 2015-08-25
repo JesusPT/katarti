@@ -29,7 +29,7 @@ public class depurar{
                     break;
                 }
             }
-            //l2 mandar al nuevo archivo
+            //Guardar l2 al nuevo archivo
             destino.impresor.println(l2);
             System.out.println(l2);
         }
