@@ -20,8 +20,13 @@ public class lexico {
     String lexema = ""; 
     expVariables exp = new expVariables();
     String ints;
+    int linea = 0;
+    
+    
+    
     public void compara(ficheroDestino d) throws IOException{
         lexema = d.l.readLine();
+        linea++;
         
         while (lexema != null) {
             t = new StringTokenizer(lexema);
@@ -30,6 +35,7 @@ public class lexico {
                 //System.out.println(token);
             } catch (NoSuchElementException e) {
                 lexema = d.l.readLine();
+                linea++;
                 t = new StringTokenizer(lexema);
                 
                 
@@ -52,6 +58,7 @@ public class lexico {
             
             
             lexema = d.l.readLine();
+            linea++;
         }
     }
     
@@ -78,14 +85,14 @@ public class lexico {
                 if (impLex()) {
                     
                 }else{
-                    System.out.println("Error de sintaxis " + lexema);
+                    System.out.println("Error de sintaxis " + lexema + "en la linea " + linea);
                 }
             }
             else if (ban && token.equals("se")){
                 if (leerLex()) {
                     
                 }else{
-                    System.out.println("Erro de sintaxis " + lexema);
+                    System.out.println("Error de sintaxis " + lexema + "en la linea " + linea);
                 }
             }else if (ban2){
                 StringTokenizer t = new StringTokenizer(lexema);
@@ -110,12 +117,12 @@ public class lexico {
                 else if(exp.dip(val) && exp.ident.obtTipo(token).equals("diplo")){
                     exp.ident.asigVal(val , token);
                 }else{
-                    System.out.println(lexema + " Los tipos no coinciden");
+                    System.out.println(lexema + " Los tipos no coinciden" + "en la linea " + linea);
                 }
                 
                 
             }else{
-                System.out.println(lexema + " Instruccion no comprendida");
+                System.out.println(lexema + " Instruccion no comprendida"  + "en la linea " + linea);
             }
             
     }
