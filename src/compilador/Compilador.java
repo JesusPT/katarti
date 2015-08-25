@@ -7,13 +7,24 @@ import java.io.IOException;
  * @author Jesús
  */
 public class Compilador {
+    /*
     
+        Compilador Katarti
+    */
     
             
     public static void main(String[] args) throws IOException {
+        
+        //Objeto Depurador código fuente, remover Comentarios y tabulaciones
         depurar dep = new depurar();
+                
+        //Fichero contenedor del codigo fuente, escrito en katarti, con extencion .gri
         ficheroFuente fuente = new ficheroFuente();
+        
+        //Fichero donde se almacena el codigo sin comentarios ni tabulaciones
         ficheroDestino destino = new ficheroDestino();
+        
+        //Analizador lexico, 
         lexico l = new lexico();
         
         dep.borrarCT(fuente, destino);
