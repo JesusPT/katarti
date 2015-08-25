@@ -1,0 +1,22 @@
+odigi ejemplo(){
+tabulador
+exo("Hola mundo!");
+exo("Suma de dos números");  
+arit a = se(arit);
+arit b = se(arit); 
+arit c = a + b;
+
+na 1:5{
+exo(c ~ "Es el resultado de la suma");
+}
+
+nai(c > 0){
+exo("c es mayor a 0"); 
+}allios{
+exo("c es menor a 0");
+}
+
+
+esto no se borra
+esto no 
+}
