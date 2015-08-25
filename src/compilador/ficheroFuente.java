@@ -60,6 +60,6 @@ public final class ficheroFuente {
             
         }
                 */
-        return "/home/jesus/Documentos/prueba.txt";
+        return "/home/jesus/Documentos/katarti/src/compilador/prueba.gri";
     }
 }
