@@ -14,7 +14,7 @@ public class expVariables {
     palabrasReservadas pr = new palabrasReservadas();
     
     
-    public void arit(String lexema) {
+    public void arit(String lexema, int linea) {
         
         String val = lexema.substring(5,lexema.length());
         String token = "";
@@ -38,10 +38,10 @@ public class expVariables {
                 ident.nuevo(new nodo(nom, tipo, valor, (String)("id")+n));
                 n++;
             }else{
-                System.out.println("El identificador " + token + " ya existe");   
+                System.out.println("Error - El identificador " + token + " ya existe(linea " + linea + ")");   
             }
             }else{
-                System.out.println("El identificador no puede ser una palabra reservada");
+                System.out.println("Error - El identificador no puede ser una palabra reservada (linea " + linea + ")");
             }
         }
         //---------------------------------------------------------------------
@@ -64,10 +64,10 @@ public class expVariables {
                     System.out.println("Valor incorrecto");
                 }
             }else{
-                System.out.println("El identificador " + token + " ya existe");
+                System.out.println("Error - El identificador " + token + " ya existe(linea " + linea + ")");
                 
             }
-            }else{System.out.println("El identificador no puede ser una palabra reservada");}
+            }else{System.out.println("Error - El identificador no puede ser una palabra reservada (linea " + linea + ")");}
             
         }
         //---------------------------------------------------------------------
@@ -90,9 +90,9 @@ public class expVariables {
                     n++;
                 }
             }else{
-                System.out.println("El identificador " + nom + " ya existe");
+                System.out.println("Error - El identificador " + token + " ya existe(linea " + linea + ")");
             }
-            }else{System.out.println("El identificador no puede ser una palabra reservada");}
+            }else{System.out.println("Error - El identificador no puede ser una palabra reservada (linea " + linea + ")");}
 }
         //---------------------------------------------------------------------
 
@@ -104,7 +104,7 @@ public class expVariables {
 }
     
     
-    public void epi(String lexema){
+    public void epi(String lexema, int linea){
         String val = lexema.substring(4,lexema.length());
         String token = "";
         String nom = "";
@@ -120,9 +120,9 @@ public class expVariables {
                 ident.nuevo(new nodo(nom, tipo, valor, (String)("id")+n));
                 n++;
             }else{
-                System.out.println("El identificador " + nom + " ya existe");   
+                System.out.println("Error - El identificador " + token + " ya existe(linea " + linea + ")");
             }
-            }else{System.out.println("El identificador no puede ser una palabra reservada");}
+            }else{System.out.println("Error - El identificador no puede ser una palabra reservada (linea " + linea + ")");}
         }
         
         //---------------------------------------------------------------------
@@ -139,10 +139,10 @@ public class expVariables {
                     ident.nuevo(new nodo(nom, tipo, valor, (String)("id")+n));
                     n++;
             }else{
-                System.out.println("El identificador " + nom + " ya existe");
+                System.out.println("Error - El identificador " + token + " ya existe(linea " + linea + ")");
                 
             }
-            }else{System.out.println("El identificador no puede ser una palabra reservada");}
+            }else{System.out.println("Error - El identificador no puede ser una palabra reservada(linea " + linea + ")");}
             
             
             
@@ -161,21 +161,21 @@ public class expVariables {
             token = borEsp(token);
             valor = ident.valorId(token);
             if(valor == null){
-                System.out.println(val + " identificador no valido");
+                System.out.println("Error - " + val + " identificador no valido" + "(en la linea " + linea +")");
             }else{
                 ident.nuevo(new nodo(nom, tipo, valor, (String)("id")+n));
                 n++;
             }
-            }else{System.out.println("El Identificador ya existe");}
-        }else{System.out.println("El identificador no puede ser una palabra reservada");}
+            }else{System.out.println("Error - El Identificador ya existe(linea " + linea + ")");}
+        }else{System.out.println("Error - El identificador no puede ser una palabra reservada" + "(en la linea " + linea + ")");}
         }
         if(!c3Epi(val) && !c2Epi(val) && !c1Epi(val)){
-                System.out.println("Error de sintaxis " + val);
+                System.out.println("Error - Sintaxis incorrecta" + val + "(en la linea " + linea + ")");
         }
     }
     
     
-    public void lexi(String lexema){
+    public void lexi(String lexema, int linea){
         String val = lexema.substring(5,lexema.length());
         String token = "";
         String nom = "";
@@ -191,7 +191,7 @@ public class expVariables {
                 ident.nuevo(new nodo(nom, tipo, valor, (String)("id")+n));
                 n++;
             }else{
-                System.out.println("El identificador " + token + " ya existe");   
+                System.out.println("Error - El identificador " + token + " ya existe(linea " + linea + ")");   
             }
         }else{System.out.println("El identificador no puede ser una palabra reservada");}
         }
@@ -230,7 +230,7 @@ public class expVariables {
             token = borEsp(token);
             valor = ident.valorId(token);
             if(valor == null){
-                System.out.println(val + " identificador no valido");
+               System.out.println("Error - " + val + " identificador no valido(en la linea " + linea + ")");
             }else{
                 ident.nuevo(new nodo(nom, tipo, valor, (String)("id")+n));
                 n++;
@@ -245,7 +245,7 @@ public class expVariables {
             
     }
     
-    public void diplo(String lexema){
+    public void diplo(String lexema, int linea){
         String val = lexema.substring(5,lexema.length());
         String token = "";
         String nom = "";
@@ -263,7 +263,7 @@ public class expVariables {
                 ident.nuevo(new nodo(nom, tipo, valor, (String)("id")+n));
                 n++;
             }else{
-                System.out.println("El identificador " + token + " ya existe");   
+                System.out.println("Error - El identificador " + token + " ya existe (linea " + linea +")");   
             }
             }
         }
@@ -287,7 +287,7 @@ public class expVariables {
                     System.out.println("Valor incorrecto");
                 }
             }else{
-                System.out.println("El identificador " + token + " ya existe");
+                System.out.println("Error - El identificador " + token + " ya existe (linea " + linea +")");
                 
             }
             }
@@ -307,13 +307,13 @@ public class expVariables {
                 token = borEsp(token);
                 valor = ident.valorId(token);
                 if(valor == null){
-                System.out.println(val + " identificador no valido");
+                System.out.println("Error - " + val + " identificador no valido(en la linea " + linea + ")");
                 }else{
                     ident.nuevo(new nodo(nom, tipo, valor, (String)("id")+n));
                     n++;
                 }
             }else{
-                System.out.println("El identificador " + nom + " ya existe");
+               System.out.println("Error - El identificador " + token + " ya existe (linea " + linea +")");
             }
             }
             

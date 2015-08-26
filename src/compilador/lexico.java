@@ -80,16 +80,16 @@ public class lexico {
            
         //Identificar el tipo de declaracion
             if (ban && token.equals("arit")) {
-                exp.arit(lexema);
+                exp.arit(lexema, linea);
             }
             else if (ban && token.equals("epi")){
-                exp.epi(lexema);
+                exp.epi(lexema, linea);
             }
             else if (ban && token.equals("lexi")){
-                exp.lexi(lexema);
+                exp.lexi(lexema, linea);
             }
             else if (ban && token.equals("diplo")){
-                exp.diplo(lexema);
+                exp.diplo(lexema, linea);
             }
             else if (ban && token.equals("exo")){
                 if (!impLex()) {
@@ -102,6 +102,8 @@ public class lexico {
                 }
             }
             else if(ban && token.equals("na")){
+            
+            }else if(ban && token.equals("nai")){
             
             }else if (ban2){//En caso de ser un identificador
                 StringTokenizer t = new StringTokenizer(lexema);
