@@ -15,8 +15,8 @@ public class expVariables {
     
     
     public void arit(String lexema, int linea) {
-        
-        String val = lexema.substring(5,lexema.length());
+        lexema = lexema.replaceAll(" ", "");
+        String val = lexema.substring(4,lexema.length());
         String token = "";
         String nom = "";
         String valor = "0";
@@ -98,7 +98,7 @@ public class expVariables {
 
         
         if(!valCaso1(val) && !valCaso2(val) && !valCaso3(val)){
-                System.out.println("Error - Sintaxis Incorrecta" + val + "(linea " + linea + ")");
+                System.out.println("Error - Sintaxis Incorrecta " + val + "(linea " + linea + ")");
         }
         
 }

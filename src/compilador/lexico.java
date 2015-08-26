@@ -105,6 +105,11 @@ public class lexico {
             
             }else if(ban && token.equals("nai")){
             
+            }else if(ban && token.equals("odigi")){
+            
+            }
+            else if(token.equals("}")){
+            
             }else if (ban2){//En caso de ser un identificador
                 StringTokenizer t = new StringTokenizer(lexema);
                 String val = t.nextToken("=");//!!!cuando no tenga =
@@ -202,7 +207,7 @@ public class lexico {
         token2 = t.nextToken(")");
         token2 = token2.substring(1);
         if(m.matches() && !exp.ident.buscarId(token2)){
-            System.out.println("Error - El identificador " + lexema + " no existe(linea " + linea + ")");
+            System.out.println("Error - El identificador " + lexema + " no existe el identificador(linea " + linea + ")");
         }
         return m.matches();
     }
