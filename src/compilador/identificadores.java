@@ -3,6 +3,7 @@ package compilador;
 /**
  *
  * @author Jesús
+ * Arbol de identificadores
  */
 public class identificadores {
     nodo inicio;
@@ -19,7 +20,7 @@ public class identificadores {
                 fin = nuevo;
         }
     }
-    
+    //Buscar identificador
     public boolean buscarId(String nom){
         
         nodo actual = inicio;
@@ -41,7 +42,7 @@ public class identificadores {
         
         
     }
-    
+    //imprimir todos los identificadores
     public void impIdent(){
         if(inicio == null){
             System.out.println("no hay identificadores");
@@ -57,6 +58,7 @@ public class identificadores {
         }
     }
     
+    //obetener el valor del identificador, por el nombre
     public String valorId(String nom){
         nodo actual = inicio;
         
@@ -71,7 +73,7 @@ public class identificadores {
         
         return null;
     }
-    
+    //asignar valor a un identificador, por nombre
     public void asigVal(String valor, String nom){
         nodo actual = inicio;
         
@@ -85,6 +87,8 @@ public class identificadores {
         } while (actual != null);
     }
     
+    
+    //Obtener del tipo del identificador, por el nombre
     public String obtTipo(String nom){
         nodo actual = inicio;
         

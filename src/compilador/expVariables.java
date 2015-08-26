@@ -7,11 +7,15 @@ import java.util.regex.Pattern;
 
 public class expVariables {
     StringTokenizer t;
+    //Tabla de identificadores declarados
     identificadores ident = new identificadores();
     int n = 0;
+    //Arreglo de palabras reservadas
     palabrasReservadas pr = new palabrasReservadas();
     
+    
     public void arit(String lexema) {
+        
         String val = lexema.substring(5,lexema.length());
         String token = "";
         String nom = "";
@@ -24,9 +28,13 @@ public class expVariables {
         if (valCaso1(val)) {
             t = new StringTokenizer(val);
             token = t.nextToken(";");
+            //EL identificador no debe ser una palabra reservada
             if (!pr.buscarPalabra(token)) {
+            //El identificador no debe exister en la tabla de identificadores
             if (!ident.buscarId(token)) {
+                //nombre del identificador
                 nom = token;
+                //agregar identificador a la tabla de identificadores
                 ident.nuevo(new nodo(nom, tipo, valor, (String)("id")+n));
                 n++;
             }else{
@@ -397,7 +405,7 @@ public class expVariables {
     public String borEsp(String c){
         
             c = c.replaceAll("\\s","");
-            c = c.replaceAll("=","");
+            c = c.replaceAll("=","");//!!!separar en otro metodo
         
            return c;
    }

@@ -1,0 +1,48 @@
+odigi ejemplo(){
+tabulador
+exo("Hola mundo!");
+exo("Suma de dos numeros");  
+arit su45%$fgv12;
+arit bt = 5; 
+arit c = b;
+bt = 20;
+epi arit;
+epi car2 = 'h';
+epi car3 = car2;
+car3 = 'E'
+epi ari!"
+lexi cadena1;
+lexi cadena2 = "Hola mundo";
+lexi cadena3 = cadena2;
+diplo ban1;
+diplo ban2 = x;
+diplo ban3 = ban2;
+arit zeta = 1000;
+
+cadena1 = "845351";
+se(cadena1);
+se("ban1");
+se(lexi,lavariable);
+se(diplomado);
+se(mivar);
+na 1:5{
+exo(c ~ "Es el resultado de la suma" ~ cadna1);
+}
+
+
+
+
+
+
+
+
+nai(c > 0){
+exo("c es mayor a 0"); 
+}allios{
+exo("c es menor a 0");
+}
+
+
+esto no se borra
+esto no 
+}

@@ -5,6 +5,7 @@ package compilador;
  * @author Jesús
  */
 public class palabrasReservadas {
+    //arreglo de palabras reservadas
     String pr[][] =      {{"arit",""},
                           {"epi",""},
                           {"lexi",""},
@@ -20,8 +21,9 @@ public class palabrasReservadas {
                           {"se",""},
                           {"exo",""}
         };
+    //bandera de existencia
     boolean existe;
-    
+    //buscar el token en el arreglo de palabras reservadas
     public boolean buscarPalabra(String a){
         
         for (int i = 0; i < pr.length; i++) {

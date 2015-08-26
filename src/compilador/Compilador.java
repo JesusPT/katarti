@@ -10,6 +10,8 @@ public class Compilador {
     /*
     
         Compilador Katarti
+    
+        *Nota, para los comentarios "!!!" significa una alerta, que debe ser probada y obtimizar el codigo.
     */
     
             

@@ -44,7 +44,7 @@ public final class ficheroFuente {
     }
     
     public void ruta(){
-        System.out.println("inserte ruta del archivo");
+        //System.out.println("inserte ruta del archivo");
         //Leer ruta del archivo
         a = leer();
         //Instanciar objeto del archivo con la ruta leida

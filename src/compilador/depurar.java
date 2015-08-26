@@ -9,9 +9,12 @@ import java.io.IOException;
  */
 public class depurar{
  
+    
+        //Borrar Comentarios(#) y Tabulaciones
 	public void borrarCT(ficheroFuente fuente, ficheroDestino destino) throws IOException{
         String linea = "";
         String l2 = "";
+        //ciclo para el analisis de liena por linea del codigo fuente
         while((linea = fuente.l.readLine())!=null){
             l2 = "";
             for (int i = 0; i < linea.length(); i++) {
@@ -33,6 +36,7 @@ public class depurar{
             destino.impresor.println(l2);
             System.out.println(l2);
         }
+        //cerrar archivos
         fuente.lector.close();
         destino.impresor.close();
     }

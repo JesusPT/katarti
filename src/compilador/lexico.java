@@ -12,20 +12,20 @@ import java.util.regex.Pattern;
  */
 public class lexico {
     
-    boolean existe;
-    palabrasReservadas pr = new palabrasReservadas();
-    StringTokenizer t;
-    StringTokenizer t2;
-    String token = "";
+    
+    palabrasReservadas pr = new palabrasReservadas();//Arreglo de palabras reservadas
+    StringTokenizer t;//Objeto tokenizer del lexema
+    StringTokenizer t2;//Objeto tokenizer, situacion para el token
+    String token = "";//
     String lexema = ""; 
     expVariables exp = new expVariables();
     String ints;
-    int linea = 0;
+    int linea = 0;//indicador de la liena en analisis
     
     
     
     public void compara(ficheroDestino d) throws IOException{
-        lexema = d.l.readLine();
+        lexema = d.l.readLine();//Leer linea del fichero destino(archivo depurado)
         linea++;
         
         while (lexema != null) {
@@ -66,9 +66,12 @@ public class lexico {
         boolean ban = false;
         boolean ban2 = false;
         
+        //Buscar si el token es una palabra reservada
         ban = pr.buscarPalabra(token);
+        //Buscar si el token es un identificador
         ban2 = exp.ident.buscarId(token);
-            
+           
+        //Identificar el tipo de declaracion
             if (ban && token.equals("arit")) {
                 exp.arit(lexema);
             }
@@ -82,47 +85,63 @@ public class lexico {
                 exp.diplo(lexema);
             }
             else if (ban && token.equals("exo")){
-                if (impLex()) {
-                    
-                }else{
-                    System.out.println("Error de sintaxis " + lexema + "en la linea " + linea);
+                if (!impLex()) {
+                    System.out.println("Error - " + lexema + "(Sintaxis incorrecta en la linea " + linea + ")");
                 }
             }
             else if (ban && token.equals("se")){
-                if (leerLex()) {
-                    
-                }else{
-                    System.out.println("Error de sintaxis " + lexema + "en la linea " + linea);
+                if (!leerLex()) {
+                    System.out.println("Error - " + lexema + "(Sintaxis incorrecta en la linea " + linea + ")");
                 }
-            }else if (ban2){
+            }else if (ban2){//En caso de ser un identificador
                 StringTokenizer t = new StringTokenizer(lexema);
-                String val = t.nextToken("=");
+                String val = t.nextToken("=");//!!!cuando no tenga =
                 val = t.nextToken(";");
                 val = val.replaceAll("=","");
                 val = val.replaceAll(" ","");
+                
+                //si el valor a asignar es entero, exp.num se asegura de que val
+                //sean solo numero y se obtiene el tipo de la tabla de identificadores
+                //con el identificador en token, el cual debe corresponder ha "arit"
                 if (exp.num(val) && exp.ident.obtTipo(token).equals("arit")) {
-                    exp.ident.asigVal(val , token);
+                    exp.ident.asigVal(val,token);
+                    
+                //si el valor a asignar es un caracter, exp.car se asegura de que en val
+                //exista exclusivamente un caracter y se obtiene el tipo de la tabla de 
+                //identificadores con el identificador token, el cual debe corresponder a "epi"
                 }else if(exp.car(val) && exp.ident.obtTipo(token).equals("epi")){
                     t = new StringTokenizer(lexema);
+                    //Se remueve las comillas simples del valor a asignar y se asigna
                     val = t.nextToken("\'");
                     val = t.nextToken("\'");
                     exp.ident.asigVal(val , token);
                 }
+                
+                
+                //si el valor a asignar es una cadena, exp.cad se asegura de que en val
+                //exista una cadena de caracteres y se obtiene el tipo de la tabla de 
+                //identificadores con el identificador token, el cual debe corresponder a "lexi"
                 else if(exp.cad(val) && exp.ident.obtTipo(token).equals("lexi")){
                     t = new StringTokenizer(lexema);
+                    //Se remueven las comillas del valor a asignary se asigna
                     val = t.nextToken("\"");
                     val = t.nextToken("\"");
                     exp.ident.asigVal(val , token);
                 }
+                
+                //si el valor a asignar es un booleano, exp.dip se asegura de que en val
+                //exista exclusivamente cero o uno y se obtiene el tipo de la tabla de 
+                //identificadores con el identificador token, el cual debe corresponder a "diplo"
                 else if(exp.dip(val) && exp.ident.obtTipo(token).equals("diplo")){
                     exp.ident.asigVal(val , token);
+                    
+                //Mensajes de error
                 }else{
-                    System.out.println(lexema + " Los tipos no coinciden" + "en la linea " + linea);
+                    System.out.println("Error - " + lexema + " (Los tipos no coinciden(en la linea " + linea + ")");
                 }
                 
-                
             }else{
-                System.out.println(lexema + " Instruccion no comprendida"  + "en la linea " + linea);
+                System.out.println("Error " + lexema + " (Instruccion no comprendida en la linea " + linea + ")");
             }
             
     }
