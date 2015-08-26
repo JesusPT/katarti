@@ -56,6 +56,13 @@ public class lexico {
                     //System.out.println(token);
                 }
             
+            if("}allios{".equals(token)){
+                
+                //token = token.replaceAll("}", "");//!!!Revisar
+                //token = token.replaceAll("{", "");
+                llamada();
+            }
+            
             
             lexema = d.l.readLine();
             linea++;
@@ -93,6 +100,9 @@ public class lexico {
                 if (!leerLex()) {
                     System.out.println("Error - " + lexema + "(Sintaxis incorrecta en la linea " + linea + ")");
                 }
+            }
+            else if(ban && token.equals("na")){
+            
             }else if (ban2){//En caso de ser un identificador
                 StringTokenizer t = new StringTokenizer(lexema);
                 String val = t.nextToken("=");//!!!cuando no tenga =
@@ -146,14 +156,14 @@ public class lexico {
             
     }
     
-    
+    //Lexico exo(imprimir)
     public boolean impLex(){
         Pattern p = Pattern.compile("exo *\\(*( *([a-zA-Z][a-zA-Z0-9]* *~))* *\"[\\u0000-\\u00FF]*\" *(~ *([a-zA-Z][a-zA-Z0-9]*))*\\) *; *");
         Matcher m = p.matcher(lexema);
         return m.matches();
     }
-    
-    public String tipoVal(String S){
+    //!!!No se por que puse este metodo
+/*    public String tipoVal(String S){
         String val = null;
         Pattern p = Pattern.compile("[0-9]+");
         Matcher m = p.matcher(lexema);
@@ -167,8 +177,10 @@ public class lexico {
         }
         return val;
     }
+*/
     
     
+    //Lexico se(leer)
     public boolean leerLex(){
         StringTokenizer t = new StringTokenizer(lexema);
         String token;
