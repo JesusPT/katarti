@@ -98,14 +98,15 @@ public class expVariables {
 
         
         if(!valCaso1(val) && !valCaso2(val) && !valCaso3(val)){
-                System.out.println("Error de sintaxis " + val);
+                System.out.println("Error - Sintaxis Incorrecta" + val + "(linea " + linea + ")");
         }
         
 }
     
     
     public void epi(String lexema, int linea){
-        String val = lexema.substring(4,lexema.length());
+        lexema = lexema.replaceAll(" ", "");
+        String val = lexema.substring(3,lexema.length());
         String token = "";
         String nom = "";
         String valor = "";
@@ -176,7 +177,8 @@ public class expVariables {
     
     
     public void lexi(String lexema, int linea){
-        String val = lexema.substring(5,lexema.length());
+        lexema = lexema.replaceAll(" ", "");
+        String val = lexema.substring(4,lexema.length());
         String token = "";
         String nom = "";
         String valor = "";
@@ -246,6 +248,7 @@ public class expVariables {
     }
     
     public void diplo(String lexema, int linea){
+        lexema = lexema.replaceAll(" ", "");
         String val = lexema.substring(5,lexema.length());
         String token = "";
         String nom = "";

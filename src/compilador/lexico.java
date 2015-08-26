@@ -160,8 +160,18 @@ public class lexico {
     
     //Lexico exo(imprimir)
     public boolean impLex(){
-        Pattern p = Pattern.compile("exo *\\(*( *([a-zA-Z][a-zA-Z0-9]* *~))* *\"[\\u0000-\\u00FF]*\" *(~ *([a-zA-Z][a-zA-Z0-9]*))*\\) *; *");
+        Pattern p = Pattern.compile(" *exo *[(]((\"[\\u0000-\u00FF]*\")|([a-zA-Z][a-zA-Z0-9]*))[)] *; *");
         Matcher m = p.matcher(lexema);
+        if (!lexema.contains("\"")) {
+            StringTokenizer token = new StringTokenizer(lexema);
+            String t = token.nextToken("(");
+            t = token.nextToken(")");
+            t = t.replaceAll("[(]","");
+            if (exp.ident.buscarId(t)) {
+                
+            }else{System.out.println("Error - El identificador " + t + " no existe(linea " + linea + ")");}
+            
+        }
         return m.matches();
     }
     //!!!No se por que puse este metodo
@@ -185,15 +195,15 @@ public class lexico {
     //Lexico se(leer)
     public boolean leerLex(){
         StringTokenizer t = new StringTokenizer(lexema);
-        String token;
-        Pattern p = Pattern.compile("se\\([a-zA-Z][a-zA-Z0-9]*\\);");
+        String token2;
+        Pattern p = Pattern.compile(" *se *([(] *[a-zA-Z][a-zA-Z0-9]* *[)]) *;");
         Matcher m = p.matcher(lexema);
-        token = t.nextToken("(");
-        token = t.nextToken(")");
-        token = token.substring(1);
-        if(m.matches() && exp.ident.buscarId(token)){
-            return true;
+        token2 = t.nextToken("(");
+        token2 = t.nextToken(")");
+        token2 = token2.substring(1);
+        if(m.matches() && !exp.ident.buscarId(token2)){
+            System.out.println("Error - El identificador " + lexema + " no existe(linea " + linea + ")");
         }
-        return false;
+        return m.matches();
     }
 }
