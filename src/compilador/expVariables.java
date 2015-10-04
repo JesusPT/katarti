@@ -13,7 +13,7 @@ public class expVariables {
     int n = 0;
     //Arreglo de palabras reservadas
     palabrasReservadas pr = new palabrasReservadas();
-    
+    tablaSLRarit SLRArit = new tablaSLRarit();
     
     public void arit(String lexema, int linea) {
         lexema = lexema.replaceAll(" ", "");
@@ -469,7 +469,7 @@ public class expVariables {
     public ArrayList<String> obtenerCadena(String cad){
         char p;
         String aux = "";
-        ArrayList<String> cadena = new ArrayList<String>();
+        ArrayList<String> cadena = new ArrayList();
         for (int i = 0; i < cad.length(); i++) {
             p = cad.charAt(i);
             if ((p >= '0' && p<= '9')||Character.isLetter(p)) {

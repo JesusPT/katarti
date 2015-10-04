@@ -8,6 +8,8 @@
  */
 package compilador;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Pahola y Jesús
@@ -18,7 +20,7 @@ public class tablaSLRarit {
         Contiene los valores de la tabla SLR que se necesitan para poder realizar
         el análisis sintáctico del código Katarti con extención .gri
     */
-    static String tablaAritmetica[][] = {
+    String tablaAritmetica[][] = {
         {"s6","s5",null,null,null,null,"s4",null,null,"1","2","3"},
         {null,null,"s7","s8",null,null,null,null,"acep",null,null,null},
         {null,null,"r3","r3","s9","s10",null,"r3","r3",null,null,null},
@@ -58,7 +60,7 @@ public class tablaSLRarit {
             T: 10
             F: 11
     */
-    static int tablaReduArit[][] = {
+    int tablaReduArit[][] = {
         {1,3,9},
         {2,3,9},
         {3,1,9},
@@ -69,4 +71,11 @@ public class tablaSLRarit {
         {8,1,11},
         {9,1,11}
     };
+    
+    ArrayList pila = new ArrayList();
+    
+    public void desplazar(){
+        
+    }
+    
 }
