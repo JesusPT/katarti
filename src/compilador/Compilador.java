@@ -28,7 +28,7 @@ public class Compilador {
         
         //Analizador lexico, 
         lexico l = new lexico();
-        
+        //borrar comentarios y tabulaciones, guardar el resutante en destino
         dep.borrarCT(fuente, destino);
         
         System.out.println("\n\n\n\n");

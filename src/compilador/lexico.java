@@ -25,9 +25,12 @@ public class lexico {
     
     
     public void compara(ficheroDestino d) throws IOException{
+        //Obtiene 
         lexema = d.l.readLine();//Leer linea del fichero destino(archivo depurado)
         linea++;
         
+        //Recorremos el archivo linea por linea, analizando estas para
+        //determinar que tarea se realizara
         while (lexema != null) {
             t = new StringTokenizer(lexema);
             try {

@@ -1,5 +1,6 @@
 package compilador;
 
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -54,9 +55,15 @@ public class expVariables {
             nom = token;
             if (!pr.buscarPalabra(token)) {
             if (!ident.buscarId(token)){
+                //obtener la cadena entre = y ;
                 token = t.nextToken(";");
+                //borrar los espacios al token
                 token = borEsp(token);
+                //guardamoa en valor la expresion seguida del igual ya sin espacios
                 valor = token;
+                //Obtenemos el ArrayList de la cadena
+                ArrayList<String> cadena = obtenerCadena(valor);
+                
                 if(num(valor)){
                     ident.nuevo(new nodo(nom, tipo, valor, (String)("id")+n));
                     n++;
@@ -393,7 +400,7 @@ public class expVariables {
     
     public boolean valCaso2(String a){
         String c = a;
-        Pattern p = Pattern.compile(" *[a-zA-Z]([a-zA-Z0-9]*) *= *[0-9]+ *; *");
+        Pattern p = Pattern.compile(" *[a-zA-Z]([a-zA-Z0-9]*) *= *[\\u0000-\\u00FF]* *; *");
         Matcher m = p.matcher(c);
         return m.matches();
     }
@@ -455,5 +462,31 @@ public class expVariables {
         Pattern p = Pattern.compile("[0|1]");
         Matcher m = p.matcher(v);
         return m.matches();
+    }
+    
+    
+    //obtener cadena para la tabla
+    public ArrayList<String> obtenerCadena(String cad){
+        char p;
+        String aux = "";
+        ArrayList<String> cadena = new ArrayList<String>();
+        for (int i = 0; i < cad.length(); i++) {
+            p = cad.charAt(i);
+            if ((p >= '0' && p<= '9')||Character.isLetter(p)) {
+                aux = aux.concat(Character.toString(p));
+            }else{
+                if(!"".equals(aux)){
+                    cadena.add(aux);
+                    aux="";
+                }
+                cadena.add(Character.toString(p));
+            }
+        }
+        if(!"".equals(aux)){
+                    cadena.add(aux);
+                    aux="";
+        }
+        cadena.add("$");
+        return cadena;
     }
 }
