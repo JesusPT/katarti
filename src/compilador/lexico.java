@@ -39,12 +39,17 @@ public class lexico {
             } catch (NoSuchElementException e) {
                 lexema = d.l.readLine();
                 linea++;
+                
                 t = new StringTokenizer(lexema);
                 
                 
                 if(!"".equals(lexema)){
-                    token = t.nextToken();
+                    try{
+                        token = t.nextToken();
                     //System.out.println(token);
+                    }catch(NoSuchElementException ex){
+                        //!!!Problema con los espacios
+                    }
                     
                 }
             }

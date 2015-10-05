@@ -37,7 +37,7 @@ public class tablaSLRarit {
         {null,null,"r2","r2","s9","s10",null,"r2","r2",null,null,null},
         {null,null,"r4","r4","r4","r4",null,"r4","r4",null,null,null},
         {null,null,"r5","r5","r5","r5",null,"r5","r5",null,null,null},
-        {null,null,"r7","r7","r7","r7",null,"r7","r7",null,null,null},
+        {null,null,"r7","r7","r7","r7",null,"r7","r7",null,null,null}
     };
     
     /*
@@ -73,9 +73,62 @@ public class tablaSLRarit {
     };
     
     ArrayList pila = new ArrayList();
+    String accion;
+    int tope;
+    int p;
+    
+
+    public tablaSLRarit() {
+        
+    }
+    
+    
     
     public void desplazar(){
         
+    }
+    
+    public boolean analizar(int[] cadena){
+        pila.clear();
+        pila.add(0);
+        int aux = 0;
+        int redu = 0;
+        p = 0;
+        tope = 0;
+        do {
+            accion = tablaAritmetica[(int)pila.get(tope)][cadena[p]];
+            try{
+            if (accion.charAt(0) == 's') {
+                aux =Integer.parseInt(accion.replaceAll("s", ""));
+                pila.add(aux);
+                tope++;
+                p++;
+                
+            }else if(accion.charAt(0) == 'r'){
+                aux = Integer.parseInt(accion.replaceAll("r", ""));
+                redu = tablaReduArit[aux-1][1];
+                for (int i = 0; i < redu; i++) {
+                    pila.remove(tope);
+                    tope--;
+                }
+                aux = Integer.parseInt(tablaAritmetica[(int)pila.get(tope)][tablaReduArit[aux-1][2]]);
+                pila.add(aux);
+                tope++;
+                
+            }
+            else if (accion.equals("acep")) {
+                return true;
+            }
+            }catch(NullPointerException e){
+                return false;
+            }
+        } while (!accion.equals(null) );
+        
+        if (accion.equals(null)) {
+            System.out.println("Expresion no valida");
+            
+        }
+        return false;
     }
     
 }

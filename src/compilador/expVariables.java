@@ -10,7 +10,9 @@ public class expVariables {
     StringTokenizer t;
     //Tabla de identificadores declarados
     identificadores ident = new identificadores();
+    tablaNumeros tblNum = new tablaNumeros();
     int n = 0;
+    int idNum = 0;
     //Arreglo de palabras reservadas
     palabrasReservadas pr = new palabrasReservadas();
     tablaSLRarit SLRArit = new tablaSLRarit();
@@ -64,12 +66,17 @@ public class expVariables {
                 //Obtenemos el ArrayList de la cadena
                 ArrayList<String> cadena = obtenerCadena(valor);
                 
-                if(num(valor)){
+                int cad[] = aregloCadena(cadena);
+            if(cad!= null){
+                if(SLRArit.analizar(cad)){
                     ident.nuevo(new nodo(nom, tipo, valor, (String)("id")+n));
                     n++;
                 }else{
-                    System.out.println("Valor incorrecto");
+                    System.out.println("Error - " + valor + " no es gramaticalmente correcto (linea " + linea + ")");
                 }
+            }else{
+                System.out.println("Error - simbolo desconocido en " + valor);
+            }
             }else{
                 System.out.println("Error - El identificador " + token + " ya existe(linea " + linea + ")");
                 
@@ -489,4 +496,56 @@ public class expVariables {
         cadena.add("$");
         return cadena;
     }
+    
+    public int[] aregloCadena(ArrayList<String> cad){
+        int[] cadNum = new int[cad.size()];
+        String p;
+        for (int i = 0; i < cad.size(); i++) {
+            p = cad.get(i);
+            if (!(num(p)) & !valId(p)) {
+                switch(p){
+                    case "+":
+                        cadNum[i] = 2;
+                    break;
+                        
+                    case "-":
+                        cadNum[i] = 3;
+                    break;
+                        
+                    case "*":
+                        cadNum[i] = 4;
+                    break;
+                        
+                    case "/":
+                        cadNum[i] = 5;
+                    break;
+                    
+                    case "(":
+                        cadNum[i] = 6;
+                    break;
+                    
+                    case ")":
+                        cadNum[i] = 7;
+                    break;
+                        
+                    case "$":
+                        cadNum[i] = 8;
+                    break;
+                }
+            }else if(num(p)){
+                tblNum.nuevo(new nodoNum(p, "num"+String.valueOf(idNum)));
+                idNum++;
+                cadNum[i] = 0;
+            }else if(valId(p)){
+                if(ident.buscarId(p)){
+                    cadNum[i] = 1;
+                }else{
+                    System.out.println("Error - El identificador " + p + " no esta definido");
+                    return null;
+                }
+            }
+        }
+        return cadNum;
+    }
+    
 }

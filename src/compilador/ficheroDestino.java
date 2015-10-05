@@ -33,7 +33,7 @@ public final class ficheroDestino {
     
     public void rutab(){
         //Leer ruta del archivo
-        b = "C:\\Users\\Jesús\\Documents\\NetBeansProjects\\Compilador\\src\\compilador\\prueba1.txt";
+        b = "/home/jesus/Documentos/katarti/src/compilador/prueba1.gri";
         //Instanciar objeto del archivo con la ruta leida
         ficherob = new File(b);
     }

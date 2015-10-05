@@ -1,7 +1,9 @@
 odigi ejemplo(){
 
         arit h@l#;
-        arit varsi = (a2+18)*(ba+1);
+        arit a2 = 2;
+        arit ba = 3+4;
+        arit varsi = a2*(ba+1);
         epi variable123larga;
         diplo sera;
         epi epi;
@@ -10,7 +12,7 @@ odigi ejemplo(){
         exo("correcto");
         se(no);
         se(varsi);
-        varsi = 27;
+        #varsi = 27;
         varsi = 'f';
 
 }

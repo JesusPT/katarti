@@ -8,6 +8,8 @@
  */
 package compilador;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Pahola y Jesús
@@ -18,7 +20,7 @@ public class tablaSLRlogico {
         Contiene los valores de la tabla SLR que se necesitan para poder realizar
         el análisis sintáctico del código Katarti con extención .gri
     */
-    static String tablaLogica[][] = {
+    String tablaLogica[][] = {
         {"s9","s10","s11","s12",null,null,"s6",null,null,null,null,"s8",null,null,"1","2","3","4","5","7"},
         {null,null,null,null,null,null,null,null,null,null,null,null,null,"acep",null,null,null,null,null,null},
         {null,null,null,null,"r2","s15",null,null,null,null,null,null,"r2","r2",null,null,null,null,null,null},
@@ -84,7 +86,7 @@ public class tablaSLRlogico {
             H: 18
             I: 19
     */
-    static int tablaReduArit[][] = {
+    int tablaReduArit[][] = {
         {1,3,14},
         {2,1,14},
         {3,3,15},
@@ -103,4 +105,53 @@ public class tablaSLRlogico {
         {16,1,19}, 
         {17,1,19},       
     };
+    
+    ArrayList pila = new ArrayList();
+    String accion;
+    int tope;
+    int p;
+    
+    public boolean analizar(int[] cadena){
+        pila.clear();
+        pila.add(0);
+        int aux = 0;
+        int redu = 0;
+        p = 0;
+        tope = 0;
+        do {
+            accion = tablaLogica[(int)pila.get(tope)][cadena[p]];
+            try{
+            if (accion.charAt(0) == 's') {
+                aux =Integer.parseInt(accion.replaceAll("s", ""));
+                pila.add(aux);
+                tope++;
+                p++;
+                
+            }else if(accion.charAt(0) == 'r'){
+                aux = Integer.parseInt(accion.replaceAll("r", ""));
+                redu = tablaReduArit[aux-1][1];
+                for (int i = 0; i < redu; i++) {
+                    pila.remove(tope);
+                    tope--;
+                }
+                aux = Integer.parseInt(tablaLogica[(int)pila.get(tope)][tablaReduArit[aux-1][2]]);
+                pila.add(aux);
+                tope++;
+                
+            }
+            else if (accion.equals("acep")) {
+                return true;
+            }
+            }catch(NullPointerException e){
+                return false;
+            }
+        } while (!accion.equals(null) );
+        
+        if (accion.equals(null)) {
+            System.out.println("Expresion no valida");
+            
+        }
+        return false;
+    }
+    
 }

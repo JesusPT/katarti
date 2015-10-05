@@ -1,0 +1,18 @@
+odigi ejemplo(){
+
+        arit h@l
+        arit a2 = 2;
+        arit ba = 3+4;
+        arit varsi = a2*(ba+1);
+        epi variable123larga;
+        diplo sera;
+        epi epi;
+        exo("hola);
+        exo(serasu);
+        exo("correcto");
+        se(no);
+        se(varsi);
+        
+        varsi = 'f';
+
+}
