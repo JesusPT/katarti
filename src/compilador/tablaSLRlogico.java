@@ -119,8 +119,9 @@ public class tablaSLRlogico {
         p = 0;
         tope = 0;
         do {
-            accion = tablaLogica[(int)pila.get(tope)][cadena[p]];
+            
             try{
+            accion = tablaLogica[(int)pila.get(tope)][cadena[p]];
             if (accion.charAt(0) == 's') {
                 aux =Integer.parseInt(accion.replaceAll("s", ""));
                 pila.add(aux);

@@ -97,6 +97,9 @@ public class expVariables {
                 token = t.nextToken(";");
                 token = borEsp(token);
                 valor = ident.valorId(token);
+                
+                
+                
                 if(valor == null){
                     System.out.println(val + " identificador no valido");
                 }else{

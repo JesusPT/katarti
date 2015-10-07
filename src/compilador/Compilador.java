@@ -14,7 +14,7 @@ public class Compilador {
         *Nota, para los comentarios "!!!" significa una alerta, que debe ser probada y obtimizar el codigo.
     */
     
-            
+           static lexico l = new lexico();
     public static void main(String[] args) throws IOException {
         
         //Objeto Depurador código fuente, remover Comentarios y tabulaciones
@@ -27,7 +27,7 @@ public class Compilador {
         ficheroDestino destino = new ficheroDestino();
         
         //Analizador lexico, 
-        lexico l = new lexico();
+        
         //borrar comentarios y tabulaciones, guardar el resutante en destino
         dep.borrarCT(fuente, destino);
         

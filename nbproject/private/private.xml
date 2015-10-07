@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/jesus/Documentos/katarti/src/compilador/Compilador.java</file>
+            <file>file:/home/jesus/Documentos/katarti/src/compilador/lexico.java</file>
+            <file>file:/home/jesus/Documentos/katarti/src/compilador/identificadores.java</file>
+            <file>file:/home/jesus/Documentos/katarti/src/compilador/nodo.java</file>
+            <file>file:/home/jesus/Documentos/katarti/src/compilador/expVariables.java</file>
+            <file>file:/home/jesus/Documentos/katarti/src/compilador/tablaSLRarit.java</file>
+            <file>file:/home/jesus/Documentos/katarti/src/compilador/palabrasReservadas.java</file>
+            <file>file:/home/jesus/Documentos/katarti/src/compilador/prueba.gri</file>
+            <file>file:/home/jesus/Documentos/katarti/src/compilador/bloques.java</file>
+        </group>
     </open-files>
 </project-private>

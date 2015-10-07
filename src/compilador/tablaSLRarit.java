@@ -96,8 +96,9 @@ public class tablaSLRarit {
         p = 0;
         tope = 0;
         do {
-            accion = tablaAritmetica[(int)pila.get(tope)][cadena[p]];
+            
             try{
+            accion = tablaAritmetica[(int)pila.get(tope)][cadena[p]];
             if (accion.charAt(0) == 's') {
                 aux =Integer.parseInt(accion.replaceAll("s", ""));
                 pila.add(aux);

@@ -19,6 +19,7 @@ public class lexico {
     String token = "";//
     String lexema = ""; 
     expVariables exp = new expVariables();
+    bloques bloque = new bloques();
     String ints;
     int linea = 0;//indicador de la liena en analisis
     
@@ -108,11 +109,20 @@ public class lexico {
                 if (!leerLex()) {
                     System.out.println("Error - " + lexema + "(Sintaxis incorrecta en la linea " + linea + ")");
                 }
-            }
-            else if(ban && token.equals("na")){
+                
+            //Estructura iterativa
+            }else if(ban && token.equals("na")){
             
+                
+            //Estructura condicional
             }else if(ban && token.equals("nai")){
-            
+                
+                bloque.nai(lexema,linea);
+                
+            }else if(ban && token.equals("eno")){
+                
+                bloque.eno(lexema,linea);
+                
             }else if(ban && token.equals("odigi")){
             
             }
@@ -134,6 +144,8 @@ public class lexico {
                 //si el valor a asignar es un caracter, exp.car se asegura de que en val
                 //exista exclusivamente un caracter y se obtiene el tipo de la tabla de 
                 //identificadores con el identificador token, el cual debe corresponder a "epi"
+                }else if(exp.ident.obtTipo(token).equals("arit") && exp.SLRArit.analizar(exp.aregloCadena(exp.obtenerCadena(val)))){
+                    exp.ident.asigVal(val,token);
                 }else if(exp.car(val) && exp.ident.obtTipo(token).equals("epi")){
                     t = new StringTokenizer(lexema);
                     //Se remueve las comillas simples del valor a asignar y se asigna
